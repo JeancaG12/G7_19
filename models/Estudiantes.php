@@ -1,4 +1,5 @@
 <?php
+
     class Estudiantes extends Conectar{
 
         public function get_Estudiantes(){
@@ -15,7 +16,7 @@
             parent::set_names();
             $sql="SELECT * FROM Estudiante WHERE Numero_Alumno=?";
             $sql=$conectar->prepare($sql);
-            $sql->binValue(1,$Numero_Alumno);
+            $sql->bindValue(1,$Numero_Alumno);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
