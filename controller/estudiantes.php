@@ -19,12 +19,12 @@
     $body=json_decode(file_get_contents("php://input"),true);
 
     switch($_GET["op"]){
-        case "GetEstudiante":
+        case "GetEstudiantes":
             $datos=$estudiant->get_Estudiantes();
             echo json_encode($datos);
         break;
 
-        case "Get_Alquiler":
+        case "GetEstudiante":
             $datos=$estudiant->get_Estudiantes($body["Numero_Alumno"]);
             echo json_encode($datos);
         break;
