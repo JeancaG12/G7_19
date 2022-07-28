@@ -41,15 +41,16 @@
         public function update_Docente($Numero_Docente,$Nombre,$Apellidos,$Fecha_Contratacion,$Direccion,$Salario,$Profesion){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE docente set Numero_Docente=$Numero_Docente, Nombre=$Nombre, Apellidos=$Apellidos, Fecha_Contratacion=$Fecha_Contratacion, Direccion=$Direccion, Salario=$Salario, Profesion=$Profesion, WHERE Numero_Docente=$Numero_Docente;";
+            $sql="UPDATE docente set Nombre=?, Apellidos=?, Fecha_Contratacion=?, Direccion=?, Salario=?, Profesion=? WHERE Numero_Docente=?;";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$Numero_Docente);
-            $sql->bindValue(2,$Nombre);
-            $sql->bindValue(3,$Apellidos);
-            $sql->bindValue(4,$Fecha_Contratacion);
-            $sql->bindValue(5,$Direccion);
-            $sql->bindValue(6,$Salario);
-            $sql->bindValue(7,$Profesion);
+            $sql->bindValue(1,$Nombre);
+            $sql->bindValue(2,$Apellidos);
+            $sql->bindValue(3,$Fecha_Contratacion);
+            $sql->bindValue(4,$Direccion);
+            $sql->bindValue(5,$Salario);
+            $sql->bindValue(6,$Profesion);
+            $sql->bindValue(7,$Numero_Docente);
+            
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -57,7 +58,7 @@
         public function delete_Docente($Numero_Docente){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="DELETE FROM docente  WHERE Numero_Docente=$Numero_Docente;";
+            $sql="DELETE FROM docente  WHERE Numero_Docente=?;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$Numero_Docente);
             $sql->execute();
