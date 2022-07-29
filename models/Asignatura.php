@@ -37,7 +37,7 @@
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function update_asignatura($nombreAsignatura, $carrera, $fechaCreacion, $unidadesVal, $promedioAprob, $numEdificio){
+        public function update_asignatura($codigoAsignatura, $nombreAsignatura, $carrera, $fechaCreacion, $unidadesVal, $promedioAprob, $numEdificio){
             $conectar=parent::conexion();
             parent::set_names();
             $sql="UPDATE asignatura SET NombreAsignatura=?, Carrera=?, FechaCreacion=?, UnidadesVal=?, PromedioAprob=?, NumeroEdificio=? WHERE CodigoAsignatura=?";
@@ -48,6 +48,7 @@
             $sql->bindValue(4, $unidadesVal);
             $sql->bindValue(5, $promedioAprob);
             $sql->bindValue(6, $numEdificio);
+            $sql->bindValue(7, $codigoAsignatura);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }

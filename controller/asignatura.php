@@ -26,7 +26,7 @@
         break;    
 
         case "GetAsignatura":
-            $datos=$asignaturas->insert_asignatura($body["CodigoAsignatura"]);
+            $datos=$asignaturas->get_asignatura($body["CodigoAsignatura"]);
             echo json_encode($datos);
 
         break;
@@ -38,7 +38,7 @@
         break;
 
         case "UpdateAsignatura":
-            $datos=$asignaturas->update_asignatura($body["NombreAsignatura"], $body["Carrera"], $body["FechaCreacion"], $body["UnidadesVal"], $body["PromedioAprob"], $body["NumeroEdificio"]);
+            $datos=$asignaturas->update_asignatura($body["CodigoAsignatura"], $body["NombreAsignatura"], $body["Carrera"], $body["FechaCreacion"], $body["UnidadesVal"], $body["PromedioAprob"], $body["NumeroEdificio"]);
             echo json_encode("Asignatura Actualizada");
 
         break;
